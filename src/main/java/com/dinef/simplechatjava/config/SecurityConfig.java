@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Allow unauthenticated access to the registration endpoint
                         .requestMatchers("/users/**").permitAll()
+                        .requestMatchers("/messages/**").permitAll()
                         // Require authentication for all other endpoints
                         .anyRequest().authenticated()
                 )
