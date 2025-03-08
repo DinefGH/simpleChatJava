@@ -5,6 +5,8 @@ import com.dinef.simplechatjava.service.MessageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/messages")
 public class MessageController {
@@ -21,4 +23,10 @@ public class MessageController {
         return ResponseEntity.ok(savedMessage);
     }
 
+    // GET endpoint to retrieve all messages
+    @GetMapping
+    public ResponseEntity<List<Message>> getMessages() {
+        List<Message> messages = messageService.getAllMessages();
+        return ResponseEntity.ok(messages);
+    }
 }

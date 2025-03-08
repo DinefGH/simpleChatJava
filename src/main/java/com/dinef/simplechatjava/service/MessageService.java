@@ -1,9 +1,10 @@
 package com.dinef.simplechatjava.service;
 
-import org.springframework.stereotype.Service;
-import com.dinef.simplechatjava.repository.MessageRepository;
 import com.dinef.simplechatjava.model.Message;
+import com.dinef.simplechatjava.repository.MessageRepository;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 @Service
 public class MessageService {
@@ -18,5 +19,8 @@ public class MessageService {
         return messageRepository.save(message);
     }
 
-    // Other methods, e.g., getMessagesByUser(User user)
+    // New method to fetch all messages
+    public List<Message> getAllMessages() {
+        return messageRepository.findAll();
+    }
 }

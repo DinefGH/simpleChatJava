@@ -1,5 +1,6 @@
 package com.dinef.simplechatjava.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -21,10 +22,10 @@ public class Message {
     // Each message is associated with one user.
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id") // Foreign key column in the "messages" table
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User user;
 
     public Message() {
-        // Set the creation time automatically
         this.createdTime = LocalDateTime.now();
     }
 
