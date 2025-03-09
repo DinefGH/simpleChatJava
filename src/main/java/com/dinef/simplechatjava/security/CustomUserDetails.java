@@ -16,10 +16,19 @@ public class CustomUserDetails implements UserDetails {
         this.user = user;
     }
 
-    // Typically, you'd have a role field in your User entity
-    // If not, you can hardcode a role, or skip roles entirely for now
+    // Expose the user's id
+    public Long getId() {
+        return user.getId();
+    }
+
+    // Expose the user's email
+    public String getEmail() {
+        return user.getEmail();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        // You can adjust this if your User entity has multiple roles
         return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
